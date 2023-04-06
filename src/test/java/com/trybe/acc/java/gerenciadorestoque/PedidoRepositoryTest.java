@@ -2,6 +2,8 @@ package com.trybe.acc.java.gerenciadorestoque;
 
 import com.trybe.acc.java.gerenciadorestoque.persistence.Pedido;
 import com.trybe.acc.java.gerenciadorestoque.persistence.PedidoRepository;
+import java.util.List;
+import java.util.Optional;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
@@ -15,14 +17,15 @@ import org.testcontainers.containers.MongoDBContainer;
 import org.testcontainers.junit.jupiter.Container;
 import org.testcontainers.junit.jupiter.Testcontainers;
 
-import java.util.List;
-import java.util.Optional;
-
-
-
+/**
+ * PedidoRepositoryTest test class.
+ */
 @Testcontainers
 @DataMongoTest(excludeAutoConfiguration = EmbeddedMongoAutoConfiguration.class)
 public class PedidoRepositoryTest {
+
+  @Container
+  private static MongoDBContainer mongoDBContainer = new MongoDBContainer("mongo:5.0.15");
 
   @Autowired
   private PedidoRepository pedidoRepository;
